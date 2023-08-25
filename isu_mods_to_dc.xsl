@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xsl:stylesheet version="1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:mods="http://www.loc.gov/mods/v3" exclude-result-prefixes="mods" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:srw_dc="info:srw/schema/1/dc-schema" xmlns:oai_dc="http://www.openarchives.org/OAI/2.0/oai_dc/" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 
-	<!-- 
+	<!--
+	Version 2.1     2023-08-25 wteal@iastate.edu
+					Removed "; " from dc:coverage fields, since those fields are not concatenated.
+					
 	Version 2.0     2023-08-11 wteal@iastate.edu
 					Added tests to check if MODS elements are emtpy to avoid outputting empty DC elements.
 					Removed "et al." from dc:creator and dc:contributor fields.
@@ -191,9 +194,6 @@
 			<xsl:if test="normalize-space(.)!= ''">
 				<dc:coverage>
 					<xsl:value-of select="."/>
-					<!--Added '<xsl:if test="position()!=last()">; </xsl:if>' to make the handling of geographic
-						terms consistent with the handling of other subject terms.-->
-					<xsl:if test="position()!=last()">; </xsl:if>
 				</dc:coverage>
 			</xsl:if>
 		</xsl:for-each>
